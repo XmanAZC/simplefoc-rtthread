@@ -1,0 +1,36 @@
+from building import *
+import os
+
+cwd = GetCurrentDir()
+path = [cwd]
+
+src = [
+    'common/base_classes/CurrentSense.cpp',
+    'common/base_classes/FOCMotor.cpp',
+    'common/base_classes/Sensor.cpp',
+    'common/foc_utils.cpp',
+    'common/lowpass_filter.cpp',
+    'common/pid.cpp',
+    'common/time_utils.cpp',
+    'communication/SimpleFOCDebug.cpp',
+    'communication/StepDirListener.cpp',
+    'current_sense/GenericCurrentSense.cpp',
+    'current_sense/InlineCurrentSense.cpp',
+    'current_sense/LowsideCurrentSense.cpp',
+    'current_sense/hardware_specific/generic_mcu.cpp',
+    'drivers/BLDCDriver3PWM.cpp',
+    'drivers/BLDCDriver6PWM.cpp',
+    'drivers/StepperDriver2PWM.cpp',
+    'drivers/StepperDriver4PWM.cpp',
+    'drivers/hardware_specific/generic_mcu.cpp',
+    'sensors/Encoder.cpp',
+    'sensors/GenericSensor.cpp',
+    'sensors/HallSensor.cpp',
+    'BLDCMotor.cpp',
+    'HybridStepperMotor.cpp',
+    'StepperMotor.cpp',
+]
+
+group = DefineGroup('SIMPLEFOC', src, depend = [''], CPPPATH = path)
+
+Return('group')

@@ -28,7 +28,7 @@ Export('env')
 Export('RTT_ROOT')
 Export('rtconfig')
 
-SDK_ROOT = os.path.abspath('./')
+SDK_ROOT = os.path.abspath('../')
 
 if os.path.exists(SDK_ROOT + '/libraries'):
     libraries_path_prefix = SDK_ROOT + '/libraries'
@@ -41,10 +41,10 @@ objs = PrepareBuilding(env, RTT_ROOT, has_libcpu=False)
 rtconfig.BSP_LIBRARY_TYPE = None
 
 # include drivers
-objs.extend(SConscript(os.path.join(libraries_path_prefix, 'HAL_Drivers', 'SConscript'),variant_dir='build/libraries/'+'HAL_Drivers', duplicate=0))
+objs.extend(SConscript(os.path.join(libraries_path_prefix, 'HAL_Drivers', 'SConscript'), duplicate=0))
 
 # include drivers
-objs.extend(SConscript(os.path.join(libraries_path_prefix, 'STM32F4_HAL', 'SConscript'),variant_dir='build/libraries/'+'STM32F4_HAL', duplicate=0))
+objs.extend(SConscript(os.path.join(libraries_path_prefix, 'STM32F4_HAL', 'SConscript'), duplicate=0))
 
 # make a building
 DoBuilding(TARGET, objs)

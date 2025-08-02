@@ -166,7 +166,7 @@
 
 
 /* Interprocess Communication (IPC) */
-
+#define RT_USING_CPLUSPLUS
 
 /* Socket is in the 'Network' category */
 
