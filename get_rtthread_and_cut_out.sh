@@ -10,7 +10,7 @@ RT_THREAD_VERSION="5.2.2"
 RT_THREAD_DIR="rt-thread-${RT_THREAD_VERSION}"
 
 # 下载源码
-# wget -O ${RT_THREAD_DIR}.zip https://codeload.github.com/RT-Thread/rt-thread/zip/refs/tags/v${RT_THREAD_VERSION}
+wget -O ${RT_THREAD_DIR}.zip https://codeload.github.com/RT-Thread/rt-thread/zip/refs/tags/v${RT_THREAD_VERSION}
 
 # -----------------------------------------------------------------------------
 # 解压源码包
