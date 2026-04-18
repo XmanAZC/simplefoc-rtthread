@@ -68,3 +68,4 @@ vdso.lds
 
 # mac
 .DS_Store
+.codex
