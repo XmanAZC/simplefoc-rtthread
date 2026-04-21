@@ -5,25 +5,25 @@ wget -O Arduino-FOC-2.4.0.zip https://codeload.github.com/simplefoc/Arduino-FOC/
 unzip Arduino-FOC-2.4.0.zip
 rm Arduino-FOC-2.4.0.zip
 
-pushd Arduino-FOC-2.4.0 > /dev/null
+pushd Arduino-FOC-2.4.0
 rm -rf \
     .github examples CITATION.cff CNAME CODE_OF_CONDUCT.md Doxyfile keywords.txt \
     library.json library.properties
 
-pushd src > /dev/null
+pushd src
 
-pushd current_sense > /dev/null
-pushd hardware_specific > /dev/null
+pushd current_sense
+pushd hardware_specific
 ls | grep -Ev '(generic_mcu.cpp)' | xargs rm -rf
-popd > /dev/null
-popd > /dev/null
+popd
+popd
 
-pushd drivers > /dev/null
-pushd hardware_specific > /dev/null
+pushd drivers
+pushd hardware_specific
 ls | grep -Ev '(generic_mcu.cpp)' | xargs rm -rf
-popd > /dev/null
-popd > /dev/null
+popd
+popd
 
-popd > /dev/null
+popd
 
-popd > /dev/null
+popd

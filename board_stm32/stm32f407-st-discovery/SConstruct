@@ -46,5 +46,8 @@ objs.extend(SConscript(os.path.join(libraries_path_prefix, 'HAL_Drivers', 'SCons
 # include drivers
 objs.extend(SConscript(os.path.join(libraries_path_prefix, 'STM32F4_HAL', 'SConscript'),variant_dir='build/libraries/'+'STM32F4_HAL', duplicate=0))
 
+simplefoc_root = os.path.abspath(os.path.join(SDK_ROOT, '..', '..', 'Arduino-FOC-2.4.0'))
+objs.extend(SConscript(os.path.join(simplefoc_root, 'SConscript'), variant_dir='build/Arduino-FOC-2.4.0', duplicate=0))
+
 # make a building
 DoBuilding(TARGET, objs)

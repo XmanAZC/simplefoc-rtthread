@@ -1,0 +1,56 @@
+from building import *
+import os
+
+Import('rtconfig')
+
+cwd = GetCurrentDir()
+
+src = [
+    'port/Print.cpp',
+    'port/RTTSerial.cpp',
+    'port/WString.cpp',
+    'port/arduino_rtthread_port.c',
+    'src/common/base_classes/CurrentSense.cpp',
+    'src/common/base_classes/FOCMotor.cpp',
+    'src/common/base_classes/Sensor.cpp',
+    'src/common/foc_utils.cpp',
+    'src/common/lowpass_filter.cpp',
+    'src/common/pid.cpp',
+    'src/common/time_utils.cpp',
+    'src/communication/SimpleFOCDebug.cpp',
+    'src/current_sense/GenericCurrentSense.cpp',
+    'src/current_sense/InlineCurrentSense.cpp',
+    'src/current_sense/LowsideCurrentSense.cpp',
+    'src/current_sense/hardware_specific/rtthread_port.cpp',
+    'src/drivers/BLDCDriver3PWM.cpp',
+    'src/drivers/BLDCDriver6PWM.cpp',
+    'src/drivers/StepperDriver2PWM.cpp',
+    'src/drivers/StepperDriver4PWM.cpp',
+    'src/drivers/hardware_specific/rtthread_port.cpp',
+    'src/BLDCMotor.cpp',
+    'src/HybridStepperMotor.cpp',
+    'src/StepperMotor.cpp',
+    'src/sensors/Encoder.cpp',
+    'src/sensors/GenericSensor.cpp',
+    'src/sensors/HallSensor.cpp',
+    'src/sensors/MagneticSensorAnalog.cpp',
+    'src/sensors/MagneticSensorPWM.cpp',
+]
+
+cpppath = [
+    cwd,
+    os.path.join(cwd, 'port'),
+    os.path.join(cwd, 'src'),
+    os.path.join(cwd, 'src', 'common'),
+    os.path.join(cwd, 'src', 'common', 'base_classes'),
+    os.path.join(cwd, 'src', 'communication'),
+    os.path.join(cwd, 'src', 'current_sense'),
+    os.path.join(cwd, 'src', 'current_sense', 'hardware_specific'),
+    os.path.join(cwd, 'src', 'drivers'),
+    os.path.join(cwd, 'src', 'drivers', 'hardware_specific'),
+    os.path.join(cwd, 'src', 'sensors'),
+]
+
+group = DefineGroup('ArduinoFOC', src, depend=[''], CPPPATH=cpppath)
+
+Return('group')
