@@ -27,6 +27,19 @@
 #include <string.h>
 #include <ctype.h>
 
+#ifndef PSTR
+#define PSTR(str) (str)
+#endif
+#ifndef PGM_P
+#define PGM_P const char *
+#endif
+#ifndef strcpy_P
+#define strcpy_P(dest, src) strcpy((dest), (src))
+#endif
+#ifndef strlen_P
+#define strlen_P(src) strlen((src))
+#endif
+
 // When compiling programs with this class, the following gcc parameters
 // dramatically increase performance and memory (RAM) efficiency, typically
 // with little or no increase in code size.

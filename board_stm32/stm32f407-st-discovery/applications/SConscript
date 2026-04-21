@@ -3,7 +3,19 @@ import os
 
 cwd = GetCurrentDir()
 src = Glob('*.c')
-CPPPATH = [cwd]
+src += Glob('*.cpp')
+simplefoc_root = os.path.abspath(os.path.join(cwd, '..', '..', '..', 'Arduino-FOC-2.4.0'))
+CPPPATH = [
+    cwd,
+    simplefoc_root,
+    os.path.join(simplefoc_root, 'port'),
+    os.path.join(simplefoc_root, 'src'),
+    os.path.join(simplefoc_root, 'src', 'common'),
+    os.path.join(simplefoc_root, 'src', 'common', 'base_classes'),
+    os.path.join(simplefoc_root, 'src', 'communication'),
+    os.path.join(simplefoc_root, 'src', 'current_sense'),
+    os.path.join(simplefoc_root, 'src', 'drivers'),
+]
 
 group = DefineGroup('Applications', src, depend = [''], CPPPATH = CPPPATH)
 
