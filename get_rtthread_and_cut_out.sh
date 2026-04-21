@@ -30,14 +30,14 @@ rm -rf \
 # -----------------------------------------------------------------------------
 # 精简 libcpu：仅保留 ARM Cortex-M4 架构支持
 # -----------------------------------------------------------------------------
-pushd libcpu > /dev/null
+pushd libcpu
 ls | grep -Ev '(arm|SConscript|Kconfig)' | xargs rm -rf
 
-pushd arm > /dev/null
+pushd arm
 ls | grep -Ev '(common|cortex-m4|SConscript|Kconfig)' | xargs rm -rf
-popd > /dev/null
+popd
 
-popd > /dev/null
+popd
 
 # -----------------------------------------------------------------------------
 # 精简 components：仅保留核心组件
@@ -46,28 +46,28 @@ popd > /dev/null
 #   - libc:    C 库支持
 #   - utilities: 工具组件 (ulog)
 # -----------------------------------------------------------------------------
-pushd components > /dev/null
+pushd components
 ls | grep -Ev '(drivers|finsh|libc|SConscript|utilities|Kconfig)' | xargs rm -rf
 
 # libc: 仅保留编译器适配和 C++ 支持
-pushd libc > /dev/null
+pushd libc
 ls | grep -Ev '(compilers|cplusplus|SConscript|Kconfig)' | xargs rm -rf
-popd > /dev/null
+popd
 
 # utilities: 仅保留 ulog 日志组件
-pushd utilities > /dev/null
+pushd utilities
 ls | grep -Ev '(ulog|SConscript|Kconfig)' | xargs rm -rf
-popd > /dev/null
+popd
 
 # drivers: 删除不需要的驱动子系统
-pushd drivers > /dev/null
+pushd drivers
 rm -rf \
     ata audio block clk dma hwcrypto led mailbox reset thermal usb \
     graphic iio mfd mtd nvme ofw pci phy phye pic regulator \
     scsi smp_call touch virtio wlan
-popd > /dev/null
+popd
 
-popd > /dev/null
+popd
 
 # -----------------------------------------------------------------------------
 # 清理所有 utest 测试目录
